@@ -2,8 +2,8 @@
 
 Vagrant.configure("2") do |config|
   config.vm.guest = :freebsd
-  config.vm.box = "freebsd-9.2-i386"
-  config.vm.box_url = "http://iris.hosting.lv/freebsd-9.2-i386.box"
+  config.vm.box = "freebsd-10.0-i386"
+  config.vm.box_url = "http://iris.hosting.lv/freebsd-10.0-i386.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,

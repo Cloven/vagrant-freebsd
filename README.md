@@ -1,7 +1,7 @@
 # FreeBSD on Vagrant
 
 I use [FreeBSD] but it's a bit of work to get it running on [Vagrant].
-With this Vagrant box you'll get a FreeBSD 9.2 i386 on UFS in one step.
+With this Vagrant box you'll get a FreeBSD 10.0 i386 on UFS in one step. FreeBSD 9.2 setup lives in [9.2 branch].
 
 <img src="http://www.freebsd.org/layout/images/logo-red.png" margin-top="0.5em" />
 
@@ -29,7 +29,7 @@ This is for people who want to have their own customized box, instead of the
 box I made for you with the scripts in this repository.
 
 The FreeBSD box is built from the stock FreeBSD ISO image, namely the
-[9.2-RELEASE-i386] disc1 ISO. Download this ISO and create a new virtual machine.
+[10.0-RELEASE-i386] disc1 ISO. Download this ISO and create a new virtual machine.
 
 ### VirtualBox Settings
 
@@ -59,7 +59,7 @@ Boot into your clean FreeBSD installation. You can now run the
 setup everything which is needed for Vagrant to run. First, in your FreeBSD
 box, login as root and fetch the installation script:
 
-    fetch -o /tmp/vagrant-setup.sh https://raw.github.com/arkadijs/vagrant-freebsd/master/bin/vagrant-setup.sh
+    fetch --no-verify-peer -o /tmp/vagrant-setup.sh https://raw.github.com/arkadijs/vagrant-freebsd/master/bin/vagrant-setup.sh
 
 Run it:
 
@@ -89,5 +89,6 @@ any improvements back to this repository.
 [FreeBSD]: http://www.freebsd.org/
 [Vagrant]: http://www.vagrantup.com/
 [Vagrantfile]: https://github.com/arkadijs/vagrant-freebsd/blob/master/Vagrantfile
-[9.2-RELEASE-i386]: http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/9.2/FreeBSD-9.2-RELEASE-i386-disc1.iso
+[10.0-RELEASE-i386]: http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-i386-disc1.iso
 [wunki freebsd]: https://github.com/wunki/vagrant-freebsd
+[9.2 branch]: https://github.com/arkadijs/vagrant-freebsd/tree/9.2

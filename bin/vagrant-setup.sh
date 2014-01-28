@@ -8,16 +8,15 @@ set -e
 
 # Packages which are pre-installed
 INSTALLED_PACKAGES="virtualbox-ose-additions python27 bash nano sudo"
-# Python 2.7 is installed for for Ansible.
-# If you want really minimal box - remove virtualbox-ose-additions as it
-# pulls in X server and libraries, and also Python.
+# Python 2.7 is installed for Ansible.
+# If you want really minimal box - remove virtualbox-ose-additions (as it
+# pulls in X server, libraries, perl5, gcc) and also remove Python.
 
 # Configuration files
 MAKE_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/make.conf"
 RC_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/rc.conf"
 RESOLVCONF_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/resolvconf.conf"
 LOADER_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/boot/loader.conf"
-PKG_REPOS_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/pkg_repos.conf"
 
 # Message of the day
 MOTD="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/motd"
@@ -40,18 +39,11 @@ rm /tmp/freebsd-update
 ################################################################################
 
 # Install the pkg management tool
-pkg_add -r pkg
+pkg bootstrap
 
 # make.conf
-fetch -o /etc/make.conf $MAKE_CONF
+fetch --no-verify-peer -o /etc/make.conf $MAKE_CONF
 
-# convert pkg
-pkg2ng
-
-# Setup pkgng
-rm -rf /usr/local/etc/pkg*
-mkdir -p /usr/local/etc/pkg/repos
-fetch -o /usr/local/etc/pkg/repos/FreeBSD.conf $PKG_REPOS_CONF
 pkg update
 pkg upgrade -y
 # Install required packages
@@ -72,13 +64,13 @@ echo "%vagrant ALL=(ALL) NOPASSWD: ALL" >> /usr/local/etc/sudoers
 # Authorize vagrant to login without a key
 mkdir -p /home/vagrant/.ssh
 # Get the public key and save it in the `authorized_keys`
-fetch -o /home/vagrant/.ssh/authorized_keys $VAGRANT_PUBLIC_KEY
+fetch --no-verify-peer -o /home/vagrant/.ssh/authorized_keys $VAGRANT_PUBLIC_KEY
 chown -R vagrant:vagrant /home/vagrant/.ssh
 
-fetch -o /etc/rc.conf $RC_CONF
-fetch -o /etc/resolvconf.conf $RESOLVCONF_CONF
-fetch -o /boot/loader.conf $LOADER_CONF
-fetch -o /etc/motd $MOTD
+fetch --no-verify-peer -o /etc/rc.conf $RC_CONF
+fetch --no-verify-peer -o /etc/resolvconf.conf $RESOLVCONF_CONF
+fetch --no-verify-peer -o /boot/loader.conf $LOADER_CONF
+fetch --no-verify-peer -o /etc/motd $MOTD
 
 resolvconf -u
 
