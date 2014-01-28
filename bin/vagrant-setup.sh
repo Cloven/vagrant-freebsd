@@ -79,7 +79,7 @@ resolvconf -u
 ################################################################################
 
 # Remove binary package archives
-rm -rf /var/cache/pkg/*
+pkg clean -a -y
 
 # Remove the history
 cat /dev/null >/root/.history
