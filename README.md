@@ -59,7 +59,8 @@ Boot into your clean FreeBSD installation. You can now run the
 setup everything which is needed for Vagrant to run. First, in your FreeBSD
 box, login as root and fetch the installation script:
 
-    fetch --no-verify-peer -o /tmp/vagrant-setup.sh https://raw.github.com/arkadijs/vagrant-freebsd/master/bin/vagrant-setup.sh
+    fetch --no-verify-peer -o /tmp/vagrant-setup.sh \
+      https://raw.github.com/arkadijs/vagrant-freebsd/master/bin/vagrant-setup.sh
 
 Run it:
 
@@ -75,6 +76,8 @@ bit more. In Linux you can do:
 You can now package the box by running the following on your local machine:
 
     vagrant package --base <name-of-your-virtual-machine> --output <name-of-your-box>
+
+There a `./package.sh` script in the repo to do the packaging.
 
 ## Credits
 
