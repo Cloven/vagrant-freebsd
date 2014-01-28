@@ -59,7 +59,7 @@ Boot into your clean FreeBSD installation. You can now run the
 setup everything which is needed for Vagrant to run. First, in your FreeBSD
 box, login as root and fetch the installation script:
 
-    fetch -o /tmp/vagrant-setup.sh https://raw.github.com/arkadijs/vagrant-freebsd/master/bin/vagrant-setup.sh
+    fetch -o /tmp/vagrant-setup.sh https://raw.github.com/arkadijs/vagrant-freebsd/9.2/bin/vagrant-setup.sh
 
 Run it:
 

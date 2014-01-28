@@ -8,9 +8,9 @@ set -e
 
 # Packages which are pre-installed
 INSTALLED_PACKAGES="virtualbox-ose-additions python27 bash nano sudo"
-# Python 2.7 is installed for for Ansible.
+# Python 2.7 is installed for Ansible.
 # If you want really minimal box - remove virtualbox-ose-additions as it
-# pulls in X server and libraries, and also Python.
+# pulls in X server and libraries, and also remove Python.
 
 # Configuration files
 MAKE_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/make.conf"
