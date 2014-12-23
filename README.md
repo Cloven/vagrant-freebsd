@@ -1,7 +1,7 @@
 # FreeBSD on Vagrant
 
 I use [FreeBSD] but it's a bit of work to get it running on [Vagrant].
-With this Vagrant box you'll get a FreeBSD 10.0 i386 on UFS in one step. FreeBSD 9.2 setup lives in [9.2 branch].
+With this Vagrant box you'll get a FreeBSD 10.1 i386 or amd64 on UFS in one step. FreeBSD 9.2 i386 setup lives in [9.2 branch].
 
 <img src="http://www.freebsd.org/layout/images/logo-red.png" margin-top="0.5em" />
 
@@ -28,8 +28,8 @@ The root password is vagrant.
 This is for people who want to have their own customized box, instead of the
 box I made for you with the scripts in this repository.
 
-The FreeBSD box is built from the stock FreeBSD ISO image, namely the
-[10.0-RELEASE-i386] disc1 ISO. Download this ISO and create a new virtual machine.
+The FreeBSD boxes are built from the stock FreeBSD ISO images, namely the
+[10.1-RELEASE-i386] and [10.1-RELEASE-amd64] disc1 ISO. Download the ISO and create a new virtual machine.
 
 ### VirtualBox Settings
 
@@ -48,14 +48,13 @@ I would also recommend to disable all the things you are not using, such as
 
 ### Installation from FreeBSD ISO
 
-Attach the ISO as a CD and boot it. Default installation should work.
-Select UTC when asked for timezone and machine hardware clock.
+Attach the ISO as a CD and boot it. Default installation should work. Deselect _games_ and _ports_ system components. Select UTC when asked for timezone and machine hardware clock.
 In network configuration step select vtnet0 and configure it with IPv4 DHCP.
 
 ### Configuration
 
 Boot into your clean FreeBSD installation. You can now run the
-`vagrant-installation.sh` script from this repository. This will install and
+`vagrant-setup.sh` script from this repository. This will install and
 setup everything which is needed for Vagrant to run. First, in your FreeBSD
 box, login as root and fetch the installation script:
 
@@ -92,6 +91,7 @@ any improvements back to this repository.
 [FreeBSD]: http://www.freebsd.org/
 [Vagrant]: http://www.vagrantup.com/
 [Vagrantfile]: https://github.com/arkadijs/vagrant-freebsd/blob/master/Vagrantfile
-[10.0-RELEASE-i386]: http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/10.0/FreeBSD-10.0-RELEASE-i386-disc1.iso
+[10.1-RELEASE-i386]: http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-i386-disc1.iso
+[10.1-RELEASE-amd64]: http://ftp.freebsd.org/pub/FreeBSD/releases/ISO-IMAGES/10.1/FreeBSD-10.1-RELEASE-amd64-disc1.iso
 [wunki freebsd]: https://github.com/wunki/vagrant-freebsd
 [9.2 branch]: https://github.com/arkadijs/vagrant-freebsd/tree/9.2

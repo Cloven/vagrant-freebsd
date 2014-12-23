@@ -1,3 +1,7 @@
-#!/bin/sh
-VBoxManage modifyvdi $HOME/'VirtualBox VMs/FreeBSD 10.0 i386/FreeBSD 10.0 i386'.vdi compact
-vagrant package --base 'FreeBSD 10.0 i386' --output freebsd-10.0-i386.box
+#!/bin/sh -xe
+arch=i386
+#arch=amd64
+v=10.1
+name="FreeBSD $v $arch"
+VBoxManage modifyvdi "$HOME/VirtualBox VMs/$name/$name.vdi" compact
+vagrant package --base "$name" --output freebsd-$v-$arch.box --vagrantfile Vagrantfile
