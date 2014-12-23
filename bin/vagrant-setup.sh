@@ -13,13 +13,15 @@ INSTALLED_PACKAGES="virtualbox-ose-additions python27 bash nano sudo"
 # pulls in X server, libraries, perl5, gcc) and also remove Python.
 
 # Configuration files
-MAKE_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/make.conf"
-RC_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/rc.conf"
-RESOLVCONF_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/resolvconf.conf"
-LOADER_CONF="https://raw.github.com/arkadijs/vagrant-freebsd/master/boot/loader.conf"
+#project_files=http://10.0.2.2/vagrant-freebsd # local testing in VirtualBox
+project_files=https://raw.github.com/arkadijs/vagrant-freebsd/master
+MAKE_CONF="$project_files/etc/make.conf"
+RC_CONF="$project_files/etc/rc.conf"
+RESOLVCONF_CONF="$project_files/etc/resolvconf.conf"
+LOADER_CONF="$project_files/boot/loader.conf"
 
 # Message of the day
-MOTD="https://raw.github.com/arkadijs/vagrant-freebsd/master/etc/motd"
+MOTD="$project_files/etc/motd"
 
 # Private key of Vagrant (you probable don't want to change this)
 VAGRANT_PUBLIC_KEY="https://raw.github.com/mitchellh/vagrant/master/keys/vagrant.pub"
@@ -66,6 +68,7 @@ mkdir -p /home/vagrant/.ssh
 # Get the public key and save it in the `authorized_keys`
 fetch --no-verify-peer -o /home/vagrant/.ssh/authorized_keys $VAGRANT_PUBLIC_KEY
 chown -R vagrant:vagrant /home/vagrant/.ssh
+chmod -R go-rwx /home/vagrant/.ssh
 
 fetch --no-verify-peer -o /etc/rc.conf $RC_CONF
 fetch --no-verify-peer -o /etc/resolvconf.conf $RESOLVCONF_CONF
